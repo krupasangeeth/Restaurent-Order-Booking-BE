@@ -2,9 +2,8 @@ package com.restaurent.food.Controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.restaurent.food.DTO.MenuItemDto;
 import com.restaurent.food.Service.MenuItemService;
@@ -21,6 +20,14 @@ public class MenuItemController {
     @GetMapping(value = "/menuitems")
     public List<MenuItemDto> getMenuItems() {
         return menuItemService.getMenuItems();
+    }
+
+    @PostMapping(value = "/menuitems")
+    public ResponseEntity<String> addMenuItems(@RequestBody List<MenuItemDto> menuItemsDto){
+
+        menuItemService.addMenuItems(menuItemsDto);
+
+        return ResponseEntity.ok("Added menu items successfully");
     }
     
 }

@@ -17,6 +17,8 @@ public class MenuItemServiceImpl implements MenuItemService{
 
     private final MenuItemRepository menuItemRepository;
 
+    private final MappingServiceImpl mappingService;
+
     @Override
     public List<MenuItemDto> getMenuItems() {
 
@@ -26,6 +28,15 @@ public class MenuItemServiceImpl implements MenuItemService{
         // .map((i) -> this.convertToMenuItemDto(i))
         .map(this::convertToMenuItemDto)
         .toList();
+    }
+
+    @Override
+    public void addMenuItems(List<MenuItemDto> menuItemsDto) {
+
+        List<MenuItem> menuItems = menuItemsDto.stream().map(mappingService::convertToMenuItemEntity).toList();
+
+        menuItemRepository.saveAll(menuItems);
+
     }
 
     private MenuItemDto convertToMenuItemDto(MenuItem menuItem) {

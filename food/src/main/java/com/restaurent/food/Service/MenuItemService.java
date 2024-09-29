@@ -7,6 +7,7 @@ import com.restaurent.food.DTO.MenuItemDto;
 public interface MenuItemService {
 
     List<MenuItemDto> getMenuItems();
-    // MenuItemDto findByMenuItemById();
+
+    void addMenuItems(List<MenuItemDto> menuItemsDto);
     
 }

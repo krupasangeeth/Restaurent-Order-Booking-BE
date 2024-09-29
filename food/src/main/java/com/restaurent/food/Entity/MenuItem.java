@@ -1,9 +1,6 @@
 package com.restaurent.food.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +15,7 @@ public class MenuItem {
 
     }
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "menu_item_id")
     private long menuItemId;
 

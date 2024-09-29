@@ -10,3 +10,4 @@ INSERT INTO menu_item (menu_item_id,price,category,name) values (8,50,'non-veg',
 INSERT INTO USER_ROLE (ROLE_ID,ROLE) Values (10001,'ADMIN')
 INSERT INTO USER_ROLE (ROLE_ID,ROLE) Values (10002,'USER')
 
+insert into users (mobile, role_id) values (8499858395, 10001)
