@@ -11,12 +11,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Table(name = "users")
 @Data
+@Builder
+@AllArgsConstructor
 public class User {
+
+    User(){}
 
     @Id
     @Column(name = "user_id")

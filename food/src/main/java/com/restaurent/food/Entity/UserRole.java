@@ -8,6 +8,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
@@ -17,7 +19,7 @@ public class UserRole {
 
     @Id
     @Column(name = "role_id")
-    private long userId;
+    private long roleId;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
