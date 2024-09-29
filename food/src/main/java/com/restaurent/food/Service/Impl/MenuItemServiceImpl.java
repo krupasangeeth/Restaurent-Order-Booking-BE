@@ -19,7 +19,7 @@ public class MenuItemServiceImpl implements MenuItemService{
 
     @Override
     public List<MenuItemDto> getMenuItems() {
-        // TODO Auto-generated method stub
+
         List<MenuItem> menuItems = menuItemRepository.findAll();
 
         return menuItems.stream()
