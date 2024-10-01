@@ -11,6 +11,8 @@ import com.restaurent.food.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -24,17 +26,17 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepository.findByMobile(mobile);
 
-        if(user != null) {
-            return mappingService.convertToUserDto(user);
-        } else {
+        return Optional.ofNullable(user)
+                .map(mappingService::convertToUserDto)
+                .orElseGet(() -> {
+                    UserRole role = userRoleRepository.findByRole(RoleEnum.USER);
+                    User newUser = User.builder()
+                            .mobile(mobile)
+                            .role(role)
+                            .build();
+                    userRepository.save(newUser);
+                    return mappingService.convertToUserDto(newUser);
+                });
 
-            UserRole role = userRoleRepository.findByRole(RoleEnum.USER);
-            User newUser = User.builder()
-                    .mobile(mobile)
-                    .role(role)
-                    .build();
-            userRepository.save(newUser);
-            return mappingService.convertToUserDto(newUser);
-        }
     }
 }

@@ -9,5 +9,7 @@ public interface MenuItemService {
     List<MenuItemDto> getMenuItems();
 
     void addMenuItems(List<MenuItemDto> menuItemsDto);
-    
+    void updateMenuItem(MenuItemDto menuItemsDto);
+    void deleteMenuItem(MenuItemDto menuItemsDto);
+
 }

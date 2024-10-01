@@ -2,6 +2,8 @@ package com.restaurent.food.Controller;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.restaurent.food.Model.ResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +31,20 @@ public class MenuItemController {
 
         return ResponseEntity.ok("Added menu items successfully");
     }
-    
+    @PostMapping(value = "/menuitem")
+    public ResponseEntity<String> updateMenuItem(@RequestBody MenuItemDto menuItemDto){
+
+        menuItemService.updateMenuItem(menuItemDto);
+
+        return ResponseEntity.ok("Updated menu item successfully");
+    }
+
+    @DeleteMapping(value = "/menuitem")
+    public ResponseEntity<ResponseBody> deleteMenuItem(@RequestBody MenuItemDto menuItemDto){
+
+        menuItemService.deleteMenuItem(menuItemDto);
+
+        return ResponseEntity.ok(new ResponseBody("Deleted"));
+    }
+
 }

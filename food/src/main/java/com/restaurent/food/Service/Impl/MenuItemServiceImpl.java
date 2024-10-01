@@ -20,6 +20,25 @@ public class MenuItemServiceImpl implements MenuItemService{
     private final MappingServiceImpl mappingService;
 
     @Override
+    public void updateMenuItem(MenuItemDto menuItemDto) {
+        long menuItemId = menuItemDto.getMenuItemId();
+        menuItemRepository.findById(menuItemId)
+                .orElseThrow(() -> new IllegalArgumentException("There is no menu item with id: " + menuItemId));
+
+        menuItemRepository.save(mappingService.convertToMenuItemEntity(menuItemDto));
+    }
+
+    @Override
+    public void deleteMenuItem(MenuItemDto menuItemDto) {
+        long menuItemId = menuItemDto.getMenuItemId();
+        menuItemRepository.findById(menuItemId)
+                .orElseThrow(() -> new IllegalArgumentException("There is no menu item with id: " + menuItemId));
+
+        menuItemRepository.deleteById(menuItemId);
+    }
+
+
+    @Override
     public List<MenuItemDto> getMenuItems() {
 
         List<MenuItem> menuItems = menuItemRepository.findAll();

@@ -2,12 +2,7 @@ package com.restaurent.food.Entity;
 
 import com.restaurent.food.Model.RoleEnum;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +14,7 @@ public class UserRole {
 
     @Id
     @Column(name = "role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long roleId;
 
     @Column(name = "role")
