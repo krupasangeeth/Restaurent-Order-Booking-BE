@@ -2,6 +2,10 @@ package com.restaurent.food.Service.Impl;
 
 import java.util.List;
 
+import com.restaurent.food.Entity.User;
+import com.restaurent.food.Model.RoleEnum;
+import com.restaurent.food.Repository.UserRepository;
+import com.restaurent.food.Repository.UserRoleRepository;
 import org.springframework.stereotype.Service;
 
 import com.restaurent.food.DTO.MenuItemDto;
@@ -21,10 +25,12 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final MappingServiceImpl mappingService;
+    private final UserRoleRepository userRoleRepository;
+    private final UserRepository userRepository;
 
 
     @Override
-    public List<OrderDto> getOrder() {
+    public List<OrderDto> getOrders() {
         // TODO Auto-generated method stub
         List<Order> orders = orderRepository.findAll();
 
@@ -61,10 +67,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrder(OrderDto orderDto) {
+    public void saveOrder(OrderDto orderDto, Long mobile) {
         // TODO Auto-generated method stub
 
-        orderRepository.save(mappingService.convertToOrderEntity(orderDto));
+//        orderDto.getUserDto().setUserRoleDto(
+//                userRoleRepository.findByRole(RoleEnum.USER)
+//        );
+        User user = userRepository.findByMobile(mobile);
+        Order order = mappingService.convertToOrderEntity(orderDto);
+        order.setUser(user);
+
+        orderRepository.save(order);
 
     };
     

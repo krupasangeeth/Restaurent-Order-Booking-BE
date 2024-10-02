@@ -6,6 +6,6 @@ import com.restaurent.food.DTO.OrderDto;
 
 
 public interface OrderService {
-    List<OrderDto> getOrder();
-    void saveOrder(OrderDto orderDto);
+    List<OrderDto> getOrders();
+    void saveOrder(OrderDto orderDto,Long mobile);
 }

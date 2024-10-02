@@ -32,11 +32,11 @@ public class MenuItemController {
         return ResponseEntity.ok("Added menu items successfully");
     }
     @PostMapping(value = "/menuitem")
-    public ResponseEntity<String> updateMenuItem(@RequestBody MenuItemDto menuItemDto){
+    public ResponseEntity<ResponseBody> updateMenuItem(@RequestBody MenuItemDto menuItemDto){
 
         menuItemService.updateMenuItem(menuItemDto);
 
-        return ResponseEntity.ok("Updated menu item successfully");
+        return ResponseEntity.ok(new ResponseBody("Updated menu item successfully"));
     }
 
     @DeleteMapping(value = "/menuitem")
