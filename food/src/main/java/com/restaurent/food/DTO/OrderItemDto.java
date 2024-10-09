@@ -1,6 +1,7 @@
 package com.restaurent.food.DTO;
 
 import com.restaurent.food.Entity.Order;
+import com.restaurent.food.Model.OrderStatusEnum;
 
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +17,7 @@ public class OrderItemDto {
     private MenuItemDto menuItemDto;
 
     private int quantity;
+
+    private OrderStatusEnum status;
 
 }

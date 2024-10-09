@@ -44,6 +44,7 @@ public class OrderServiceImpl implements OrderService {
         .map((orderItem) -> OrderItemDto.builder()
         .orderItemId(orderItem.getOrderItemId())
         .quantity(orderItem.getQuantity())
+        .status(orderItem.getStatus())
         .menuItemDto(convertToMenuItemDto(orderItem.getMenuItem()))
         .build())
         .toList();

@@ -1,5 +1,7 @@
 package com.restaurent.food.Entity;
 
+import com.restaurent.food.Model.OrderStatusEnum;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,5 +33,9 @@ public class OrderItem {
 
     @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private OrderStatusEnum status;
     
 }

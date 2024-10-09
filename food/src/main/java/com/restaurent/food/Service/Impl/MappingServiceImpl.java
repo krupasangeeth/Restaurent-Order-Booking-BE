@@ -2,7 +2,6 @@ package com.restaurent.food.Service.Impl;
 
 import java.util.List;
 
-import org.apache.catalina.Role;
 import org.springframework.stereotype.Service;
 
 import com.restaurent.food.DTO.MenuItemDto;
@@ -37,6 +36,7 @@ public class MappingServiceImpl implements MappingService {
         .map((orderItemDto) -> OrderItem.builder()
         .orderItemId(orderItemDto.getOrderItemId())
         .quantity(orderItemDto.getQuantity())
+        .status(orderItemDto.getStatus())
         .menuItem(convertToMenuItemEntity(orderItemDto.getMenuItemDto()))
         .build())
         .toList();
